@@ -60,8 +60,14 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   if (eventType === 'user.created') {
-    const { id, first_name, last_name, email_addresses, public_metadata } =
-      evt.data;
+    const {
+      id,
+      first_name,
+      last_name,
+      email_addresses,
+      public_metadata,
+      image_url,
+    } = evt.data;
     if (!id || !email_addresses) {
       return new Response('Error occured -- missing data', { status: 400 });
     }
@@ -71,14 +77,21 @@ export async function POST(req: Request) {
       email: email_addresses[0].email_address,
       name: first_name + ' ' + last_name,
       role: public_metadata.role == 'admin' ? Role.ADMIN : Role.USER,
+      imageUrl: image_url,
     };
 
     await createUser(user as User);
   }
 
   if (eventType === 'user.updated') {
-    const { id, first_name, last_name, email_addresses, public_metadata } =
-      evt.data;
+    const {
+      id,
+      first_name,
+      last_name,
+      email_addresses,
+      public_metadata,
+      image_url,
+    } = evt.data;
     if (!id || !email_addresses) {
       return new Response('Error occured -- missing data', { status: 400 });
     }
@@ -93,8 +106,10 @@ export async function POST(req: Request) {
       email: email_addresses[0].email_address,
       name: first_name + ' ' + last_name,
       role: public_metadata.role == 'admin' ? Role.ADMIN : Role.USER,
+      imageUrl: image_url,
     };
 
+    console.log('IMAGE => ', image_url);
     await updateUser(user?.id, data);
   }
 
