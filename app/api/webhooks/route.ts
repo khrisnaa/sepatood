@@ -108,8 +108,6 @@ export async function POST(req: Request) {
       role: public_metadata.role == 'admin' ? Role.ADMIN : Role.USER,
       imageUrl: image_url,
     };
-
-    console.log('IMAGE => ', image_url);
     await updateUser(user?.id, data);
   }
 
