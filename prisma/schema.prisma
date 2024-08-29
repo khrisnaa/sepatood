@@ -56,7 +56,7 @@ model Brand {
   @@map("brands")
 }
 
-model Condtion {
+model Condition {
   id          String @id @default(uuid())
   name        String
   description String
@@ -105,19 +105,19 @@ model Category {
 }
 
 model Shoe {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   brandId     String
-  brand       Brand    @relation(fields: [brandId], references: [id])
+  brand       Brand     @relation(fields: [brandId], references: [id])
   model       String
   sizeId      String
-  size        Size     @relation(fields: [sizeId], references: [id])
+  size        Size      @relation(fields: [sizeId], references: [id])
   conditionId String
-  condition   Condtion @relation(fields: [conditionId], references: [id])
+  condition   Condition @relation(fields: [conditionId], references: [id])
   price       Float
   stock       Int
   description String
-  isArchived  Boolean  @default(false)
-  isFeatured  Boolean  @default(false)
+  isArchived  Boolean   @default(false)
+  isFeatured  Boolean   @default(false)
 
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt

@@ -15,7 +15,7 @@ export const createColor = async (values: ColorType) => {
       data: validateFields.data,
     });
   } catch (error) {
-    console.log('CREATE => ', error);
+    console.log('CREATE_COLOR => ', error);
     throw new Error('Unable to create color.');
   }
 };
