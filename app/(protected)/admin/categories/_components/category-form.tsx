@@ -17,21 +17,13 @@ import {
 import { useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { ImageUpload } from '@/components/image-upload';
 import { Trash } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { AlertModal } from '@/components/alert-modal';
 import { useState } from 'react';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { createBrand, deleteBrand, updateBrand } from '@/actions/brands';
+
 import { useAlertModal } from '@/hooks/use-alert-modal';
 import {
   createCategory,
@@ -148,7 +140,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Enter brand name" />
+                    <Input {...field} placeholder="Enter category name" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -163,7 +155,7 @@ export const CategoryForm = ({ initialData }: CategoryFormProps) => {
                   <FormControl>
                     <Textarea
                       {...field}
-                      placeholder="Enter brand description"
+                      placeholder="Enter category description"
                     />
                   </FormControl>
                   <FormMessage />

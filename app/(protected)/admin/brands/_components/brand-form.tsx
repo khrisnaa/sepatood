@@ -78,7 +78,6 @@ export const BrandForm = ({ initialData, billboards }: BrandFormProps) => {
       router.push(`/admin/brands`);
       router.refresh();
     } catch (error) {
-      console.log(error);
       toast({
         description:
           error instanceof Error
@@ -100,7 +99,6 @@ export const BrandForm = ({ initialData, billboards }: BrandFormProps) => {
       router.push(`/admin/brands`);
       router.refresh();
     } catch (error) {
-      console.log(error);
       toast({
         description:
           error instanceof Error

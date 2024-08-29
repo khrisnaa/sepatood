@@ -1,15 +1,15 @@
 'use client';
 
-import { deleteBrand } from '@/actions/brands';
-import { BrandColumns } from './columns';
+import { CategoryColumns } from './columns';
 import { AlertModal } from '@/components/alert-modal';
 import { CellActions } from '@/components/data-table/cell-actions';
 import { useToast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAlertModal } from '@/hooks/use-alert-modal';
+import { deleteCategory } from '@/actions/categories';
 
-export const Actions = ({ data }: { data: BrandColumns }) => {
+export const Actions = ({ data }: { data: CategoryColumns }) => {
   const router = useRouter();
   const { toast } = useToast();
   const { open, setOpen } = useAlertModal();
@@ -18,21 +18,21 @@ export const Actions = ({ data }: { data: BrandColumns }) => {
 
   const onCopy = () => {
     toast({
-      description: 'Brand ID copied to clipboard.',
+      description: 'Category ID copied to clipboard.',
     });
     data.id && navigator.clipboard.writeText(data.id);
   };
 
   const onUpdate = () => {
-    router.push(`/admin/brands/${data.id}`);
+    router.push(`/admin/categories/${data.id}`);
   };
 
   const onDelete = async () => {
     setLoading(true);
     try {
-      await deleteBrand(data.id);
+      await deleteCategory(data.id);
       toast({
-        description: 'Brand deleted.',
+        description: 'Category deleted.',
       });
       router.refresh();
     } catch (error) {
