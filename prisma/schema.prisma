@@ -18,9 +18,210 @@ model User {
   name        String?
   email       String
   role        Role
+  imageUrl    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Cart      Cart?
+  Order     Order[]
+
+  @@map("users")
+}
+
+model Billboard {
+  id            String @id @default(uuid())
+  label         String
+  description   String
+  backgroundUrl String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  brands    Brand[]
+
+  @@map("billboards")
+}
+
+model Brand {
+  id          String    @id @default(uuid())
+  billboardId String
+  billboard   Billboard @relation(fields: [billboardId], references: [id])
+  name        String
+  description String
+  logoUrl     String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  shoes     Shoe[]
+
+  @@map("brands")
+}
+
+model Condtion {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  shoes     Shoe[]
+
+  @@map("conditions")
+}
+
+model Size {
+  id     String @id @default(uuid())
+  size   Float
+  length Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  shoes     Shoe[]
+
+  @@map("sizes")
+}
+
+model Color {
+  id       String @id @default(uuid())
+  name     String
+  hexValue String
+
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  shoeColors ShoeColor[]
+
+  @@map("colors")
+}
+
+model Category {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  shoeCategories ShoeCategory[]
+
+  @@map("categories")
+}
+
+model Shoe {
+  id          String   @id @default(uuid())
+  brandId     String
+  brand       Brand    @relation(fields: [brandId], references: [id])
+  model       String
+  sizeId      String
+  size        Size     @relation(fields: [sizeId], references: [id])
+  conditionId String
+  condition   Condtion @relation(fields: [conditionId], references: [id])
+  price       Float
+  stock       Int
+  description String
+  isArchived  Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
+
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  shoeImages     ShoeImage[]
+  shoeColors     ShoeColor[]
+  shoeCategories ShoeCategory[]
+  CartItem       CartItem[]
+  OrderItem      OrderItem[]
+
+  @@map("shoes")
+}
+
+model ShoeImage {
+  id     String @id @default(uuid())
+  shoeId String
+  shoe   Shoe   @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+  url    String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("users")
+  @@map("shoe_images")
+}
+
+model ShoeColor {
+  id      String @id @default(uuid())
+  shoeId  String
+  shoe    Shoe   @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+  colorId String
+  color   Color  @relation(fields: [colorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("shoe_colors")
+}
+
+model ShoeCategory {
+  id         String   @id @default(uuid())
+  shoeId     String
+  shoe       Shoe     @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("shoe_categories")
+}
+
+model Cart {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  cartItems CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id     String @id @default(uuid())
+  cartId String
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  shoeId String
+  shoe   Shoe   @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("cart_items")
+}
+
+enum Status {
+  PENDING
+  COMPLETE
+  CANCLE
+}
+
+model Order {
+  id         String @id @default(uuid())
+  userId     String
+  user       User   @relation(fields: [userId], references: [id])
+  totalPrice Float
+  status     Status
+
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  OrderItem OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id      String @id @default(uuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  shoeId  String
+  shoe    Shoe   @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("order_items")
 }
