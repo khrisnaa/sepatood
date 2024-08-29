@@ -5,15 +5,15 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/billboards', label: 'Billboards' },
-  { href: '/brands', label: 'Brands' },
-  { href: '/categories', label: 'Categories' },
-  { href: '/colors', label: 'Colors' },
-  { href: '/sizes', label: 'Sizes' },
-  { href: '/conditions', label: 'Conditions' },
-  { href: '/shoes', label: 'Shoes' },
-  { href: '/orders', label: 'Orders' },
+  { href: '/admin/dashboard', label: 'Dashboard' },
+  { href: '/admin/billboards', label: 'Billboards' },
+  { href: '/admin/brands', label: 'Brands' },
+  { href: '/admin/categories', label: 'Categories' },
+  { href: '/admin/colors', label: 'Colors' },
+  { href: '/admin/sizes', label: 'Sizes' },
+  { href: '/admin/conditions', label: 'Conditions' },
+  { href: '/admin/shoes', label: 'Shoes' },
+  { href: '/admin/orders', label: 'Orders' },
 ];
 
 export function AdminNavLinks({
