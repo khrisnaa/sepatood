@@ -61,7 +61,7 @@ export const deleteBrand = async (id: string) => {
   try {
     await db.brand.delete({ where: { id } });
   } catch (error) {
-    console.log('BRAND_DELETE:', error);
+    console.log('DELETE_BRAND =>', error);
     throw new Error('Unable to delete brand.');
   }
 };
