@@ -22,5 +22,5 @@ export const CheckoutButton = ({ cartId }: CheckoutButtonProps) => {
     await createOrder(data);
     router.refresh();
   };
-  return <Button onClick={onCheckout}>CheckoutButton</Button>;
+  return <Button onClick={onCheckout}>Checkout</Button>;
 };
