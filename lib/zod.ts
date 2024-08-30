@@ -67,6 +67,19 @@ export const ShoeSchema = z.object({
   description: z.string().min(1, { message: 'Description is required.' }),
   isArchived: z.boolean().optional(),
   isFeatured: z.boolean().optional(),
+  shoeImages: z
+    .object({ url: z.string().url({ message: 'Invalid image URL format.' }) })
+    .array(),
+  shoeColors: z
+    .object({
+      colorId: z.string().min(1, { message: 'Color ID is required.' }),
+    })
+    .array(),
+  shoeCategories: z
+    .object({
+      categoryId: z.string().min(1, { message: 'Category ID is required.' }),
+    })
+    .array(),
 });
 
 export const ShoeImageSchema = z.object({

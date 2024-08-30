@@ -47,11 +47,10 @@ export const updateSize = async (id: string, values: SizeType) => {
       throw new Error('Inavlid input.');
     }
 
-    const size = await db.size.update({
+    await db.size.update({
       where: { id },
       data: validateFields.data,
     });
-    return size;
   } catch (error) {
     console.log('UPDATE_SIZE => ', error);
     throw new Error('Unable to update size.');
