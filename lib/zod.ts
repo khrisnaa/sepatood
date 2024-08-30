@@ -1,14 +1,18 @@
+import { OrderStatus, Role } from '@prisma/client';
 import { z } from 'zod';
 
-export const RoleEnum = z.enum(['USER', 'ADMIN'], {
+export const RoleEnum = z.enum([Role.USER, Role.ADMIN], {
   errorMap: () => ({ message: "Role must be either 'USER' or 'ADMIN'." }),
 });
 
-export const StatusEnum = z.enum(['PENDING', 'COMPLETE', 'CANCLE'], {
-  errorMap: () => ({
-    message: "Status must be 'PENDING', 'COMPLETE', or 'CANCLE'.",
-  }),
-});
+export const StatusEnum = z.enum(
+  [OrderStatus.PENDING, OrderStatus.COMPLETE, OrderStatus.CANCLE],
+  {
+    errorMap: () => ({
+      message: "Status must be 'PENDING', 'COMPLETE', or 'CANCLE'.",
+    }),
+  },
+);
 
 export const UserSchema = z.object({
   clerkUserId: z.string().min(1, { message: 'Clerk User ID is required.' }),
@@ -99,6 +103,7 @@ export const ShoeCategorySchema = z.object({
 
 export const CartSchema = z.object({
   userId: z.string().min(1, { message: 'User ID is required.' }),
+  shoeId: z.string().min(1, { message: 'Shoe ID is required.' }),
 });
 
 export const CartItemSchema = z.object({
@@ -108,10 +113,11 @@ export const CartItemSchema = z.object({
 
 export const OrderSchema = z.object({
   userId: z.string().min(1, { message: 'User ID is required.' }),
-  totalPrice: z
-    .number()
-    .min(0, { message: 'Total price must be a positive number.' }),
-  status: StatusEnum,
+  // totalPrice: z
+  //   .number()
+  //   .min(0, { message: 'Total price must be a positive number.' }),
+  // status: StatusEnum,
+  cartId: z.string().min(1, { message: 'Cart ID is required.' }),
 });
 
 export const OrderItemSchema = z.object({

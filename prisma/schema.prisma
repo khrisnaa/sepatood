@@ -193,18 +193,18 @@ model CartItem {
   @@map("cart_items")
 }
 
-enum Status {
+enum OrderStatus {
   PENDING
   COMPLETE
   CANCLE
 }
 
 model Order {
-  id         String @id @default(uuid())
+  id         String      @id @default(uuid())
   userId     String
-  user       User   @relation(fields: [userId], references: [id])
+  user       User        @relation(fields: [userId], references: [id])
   totalPrice Float
-  status     Status
+  status     OrderStatus
 
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
