@@ -20,7 +20,7 @@ const config = {
     extend: {
       screens: {
         xxs: '380px',
-        xs: '460px',
+        xs: '480px',
       },
       fontFamily: {
         anton: ['Anton', 'system-ui'],
