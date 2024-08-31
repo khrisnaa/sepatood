@@ -58,7 +58,7 @@ export const BrandForm = ({ initialData, billboards }: BrandFormProps) => {
     resolver: zodResolver(BrandSchema),
     defaultValues: initialData || {
       name: '',
-      logoUrl: '',
+      // logoUrl: '',
       description: '',
       billboardId: '',
     },
@@ -138,7 +138,7 @@ export const BrandForm = ({ initialData, billboards }: BrandFormProps) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full space-y-6 py-8"
         >
-          <FormField
+          {/* <FormField
             control={form.control}
             name="logoUrl"
             render={({ field }) => (
@@ -156,7 +156,7 @@ export const BrandForm = ({ initialData, billboards }: BrandFormProps) => {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <div className="grid grid-cols-3 gap-4">
             <FormField
               control={form.control}

@@ -36,7 +36,7 @@ export const BrandSchema = z.object({
   billboardId: z.string().min(1, { message: 'Billboard ID is required.' }),
   name: z.string().min(1, { message: 'Name is required.' }),
   description: z.string().min(1, { message: 'Description is required.' }),
-  logoUrl: z.string().url({ message: 'Invalid logo URL format.' }),
+  // logoUrl: z.string().url({ message: 'Invalid logo URL format.' }),
 });
 
 export const ConditionSchema = z.object({
