@@ -17,6 +17,7 @@ import {
   OrderSchema,
   OrderItemSchema,
 } from '@/lib/zod';
+import { Prisma } from '@prisma/client';
 import { z } from 'zod';
 
 export type RoleType = z.infer<typeof RoleEnum>;
@@ -36,3 +37,14 @@ export type CartType = z.infer<typeof CartSchema>;
 export type CartItemType = z.infer<typeof CartItemSchema>;
 export type OrderType = z.infer<typeof OrderSchema>;
 export type OrderItemType = z.infer<typeof OrderItemSchema>;
+
+export type ShoeData = Prisma.ShoeGetPayload<{
+  include: {
+    brand: true;
+    condition: true;
+    size: true;
+    shoeImages: true;
+    shoeCategories: { include: { category: true } };
+    shoeColors: { include: { color: true } };
+  };
+}>;

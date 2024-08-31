@@ -12,15 +12,23 @@ const Page = async () => {
 
       <div className="h-24 w-24 bg-red-500 p-4 text-green-500">
         <Image
-          src="/images/nike-logo.svg"
+          src="/logos/nike-logo.svg"
           height={150}
           width={150}
           alt="logo"
           className="w-full bg-red-800 bg-cover text-green-500"
         />
       </div>
-      <div className="h-24 w-24 bg-red-500 bg-[url('/images/nike-logo.svg')] bg-contain bg-center bg-no-repeat text-red-500" />
-      <div className="h-24 w-24 bg-red-500" />
+      <div className="h-24 w-24 bg-red-500 bg-[url('/logos/nike-logo.svg')] bg-contain bg-center bg-no-repeat text-red-500" />
+      <div className="h-24 w-24 bg-red-500 p-4">
+        <Image
+          src="/logos/converse-logo-w.svg"
+          height={150}
+          width={150}
+          alt="logo"
+          className="w-full bg-red-800 bg-cover text-green-500"
+        />
+      </div>
       <div className="h-24 w-24 bg-red-500" />
     </div>
   );

@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xxs: '380px',
+        xs: '460px',
+      },
       fontFamily: {
         anton: ['Anton', 'system-ui'],
       },
