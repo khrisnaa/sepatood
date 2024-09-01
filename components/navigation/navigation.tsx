@@ -21,7 +21,7 @@ export const Navigation = () => {
 
   return (
     <motion.nav
-      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-secondary px-4 xl:px-8"
+      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-secondary px-4"
       variants={{
         visible: { y: 0 },
         hidden: { y: '-100%' },

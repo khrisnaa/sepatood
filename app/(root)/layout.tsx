@@ -1,11 +1,13 @@
+import { MobileNavigation } from '@/components/navigation/mobile-navigation';
 import { Navigation } from '@/components/navigation/navigation';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="">
+    <div className="relative flex min-h-screen flex-col bg-yellow-500">
       <Navigation />
-      {children}
-    </main>
+      <main className="flex-1">{children}</main>
+      <MobileNavigation />
+    </div>
   );
 };
 export default Layout;

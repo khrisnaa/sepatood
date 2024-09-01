@@ -17,12 +17,23 @@ import { Search, Settings, ShoppingBag, User } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion, useAnimation } from 'framer-motion';
 export const NavigationActions = () => {
-  const rotateControls = useAnimation();
+  const bounceControls = useAnimation();
   const searchControls = useAnimation();
+  const rotateControls = useAnimation();
+
   return (
     <div className="flex items-center gap-2 md:gap-4">
       <motion.button
         className="p-1"
+        onClick={() => {
+          searchControls.start({
+            scale: [1, 1.2, 1],
+            transition: {
+              duration: 0.8,
+              ease: 'easeInOut',
+            },
+          });
+        }}
         onHoverStart={() => {
           searchControls.start({
             scale: [1, 1.2, 1],
@@ -41,8 +52,17 @@ export const NavigationActions = () => {
       </motion.button>
       <motion.button
         className="p-1"
+        onClick={() => {
+          bounceControls.start({
+            rotate: [0, 15, -10, 0],
+            transition: {
+              duration: 0.5,
+              ease: 'easeInOut',
+            },
+          });
+        }}
         onHoverStart={() => {
-          rotateControls.start({
+          bounceControls.start({
             rotate: [0, 15, -10, 0],
             transition: {
               duration: 0.5,
@@ -51,17 +71,37 @@ export const NavigationActions = () => {
           });
         }}
         onHoverEnd={() => {
-          rotateControls.start({ rotate: 0, transition: { duration: 0.5 } });
+          bounceControls.start({ rotate: 0, transition: { duration: 0.5 } });
         }}
-        animate={rotateControls}
+        animate={bounceControls}
       >
         <ShoppingBag className="h-5 w-5" />
       </motion.button>
       <SettingsMenu>
         <motion.button
           className="p-1"
-          whileHover={{ rotate: 90 }}
-          transition={{ duration: 1, ease: 'easeInOut', type: 'spring' }}
+          onClick={() => {
+            rotateControls.start({
+              rotate: [0, 90, 0],
+              transition: {
+                duration: 0.8,
+                ease: 'easeInOut',
+              },
+            });
+          }}
+          onHoverStart={() => {
+            rotateControls.start({
+              rotate: [0, 90],
+              transition: {
+                duration: 0.5,
+                ease: 'easeInOut',
+              },
+            });
+          }}
+          onHoverEnd={() => {
+            rotateControls.start({ rotate: 0, transition: { duration: 0.5 } });
+          }}
+          animate={rotateControls}
         >
           <Settings className="h-5 w-5" />
         </motion.button>
