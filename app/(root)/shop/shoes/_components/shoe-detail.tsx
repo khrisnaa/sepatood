@@ -49,7 +49,7 @@ export const ShoeDetail = ({ shoe }: ShoeDetailProps) => {
             <ImageTrigger key={index} value={String(index)} imgUrl={item.url} />
           ))}
         </TabsList>
-        <div className="flex w-full max-w-md items-center justify-center border-2 border-primary">
+        <div className="flex w-full max-w-md items-center justify-center">
           {shoe.shoeImages.map((item, index) => (
             <ImageContent key={index} value={String(index)} imgUrl={item.url} />
           ))}

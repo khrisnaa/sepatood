@@ -12,7 +12,7 @@ export const createOrder = async (values: OrderType) => {
       throw new Error('Invalid input.');
     }
 
-    const { userId, cartId } = validateFields.data;
+    const { userId, cartId, totalPrice } = validateFields.data;
 
     const cartItems = await db.cartItem.findMany({
       where: { cartId },
@@ -22,14 +22,6 @@ export const createOrder = async (values: OrderType) => {
     const orderItems = cartItems.map((item) => {
       return { shoeId: item.shoeId };
     });
-
-    const totalPrice = cartItems
-      .map((item) => {
-        return item.shoe.price;
-      })
-      .reduce((acc, num) => {
-        return acc + num;
-      });
 
     await db.order.create({
       data: {

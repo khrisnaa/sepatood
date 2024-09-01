@@ -9,18 +9,32 @@ import { useRouter } from 'next/navigation';
 
 interface CheckoutButtonProps {
   cartId: String;
+  totalPrice: number;
 }
 
-export const CheckoutButton = ({ cartId }: CheckoutButtonProps) => {
+export const CheckoutButton = ({ cartId, totalPrice }: CheckoutButtonProps) => {
   const { userData, error, loading } = useCurrentUser();
   const router = useRouter();
   const onCheckout = async () => {
-    const data: OrderType = {
-      userId: String(userData?.id),
-      cartId: String(cartId),
-    };
-    await createOrder(data);
-    router.refresh();
+    try {
+      const data: OrderType = {
+        userId: String(userData?.id),
+        cartId: String(cartId),
+        totalPrice,
+      };
+      await createOrder(data);
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
   };
-  return <Button onClick={onCheckout}>Checkout</Button>;
+  return (
+    <Button
+      variant={'flatPrimary'}
+      className="uppercase sm:mt-6 sm:w-full sm:py-6 lg:mt-8"
+      onClick={onCheckout}
+    >
+      Make Order
+    </Button>
+  );
 };

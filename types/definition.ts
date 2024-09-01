@@ -48,3 +48,16 @@ export type ShoeData = Prisma.ShoeGetPayload<{
     shoeColors: { include: { color: true } };
   };
 }>;
+
+export type CartItemData = Prisma.CartItemGetPayload<{
+  include: {
+    shoe: {
+      include: {
+        brand: true;
+        size: true;
+        shoeImages: true;
+        condition: true;
+      };
+    };
+  };
+}>;

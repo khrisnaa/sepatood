@@ -13,11 +13,11 @@ export const ImageContent = ({ value, imgUrl }: ImageContentProps) => {
     <div>
       <TabsContent
         value={value}
-        className="m-0 h-full w-full p-0"
+        className="m-0 h-full w-full border-2 border-primary p-2"
         defaultValue="0"
         defaultChecked={true}
       >
-        <div className="m-0 aspect-square h-full w-full min-w-[200px] max-w-[400px]">
+        <div className="aspect-square h-full w-full min-w-[200px] max-w-[400px]">
           <Image
             alt="shoes"
             src={imgUrl}

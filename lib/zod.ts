@@ -113,9 +113,9 @@ export const CartItemSchema = z.object({
 
 export const OrderSchema = z.object({
   userId: z.string().min(1, { message: 'User ID is required.' }),
-  // totalPrice: z
-  //   .number()
-  //   .min(0, { message: 'Total price must be a positive number.' }),
+  totalPrice: z
+    .number()
+    .min(0, { message: 'Total price must be a positive number.' }),
   // status: StatusEnum,
   cartId: z.string().min(1, { message: 'Cart ID is required.' }),
 });
