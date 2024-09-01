@@ -11,7 +11,7 @@ export const formatDate = (date: Date) => {
 };
 
 export const formatPrice = (price: number) => {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
     minimumFractionDigits: 0,
