@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const links = [
   { href: '/', label: 'Home', icon: <Home /> },
@@ -20,6 +22,8 @@ const links = [
 ];
 
 export const MobileNavigation = () => {
+  const pathname = usePathname();
+
   const bounce = {
     whileHover: { scale: 1.2, rotate: 10 },
     whileTap: { scale: 0.9, rotate: -10 },
@@ -31,7 +35,18 @@ export const MobileNavigation = () => {
       <nav className="flex h-full w-full items-center justify-between px-8">
         {links.map((link) => (
           <Link key={link.href} href={link.href}>
-            <motion.button {...bounce}>{link.icon}</motion.button>
+            <motion.button
+              {...bounce}
+              className={cn(
+                'rounded-md p-2',
+                link.href === '/'
+                  ? pathname === link.href && 'bg-primary text-secondary'
+                  : pathname.startsWith(link.href) &&
+                      'bg-primary text-secondary',
+              )}
+            >
+              {link.icon}
+            </motion.button>
           </Link>
         ))}
       </nav>

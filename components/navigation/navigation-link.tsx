@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 interface NavigationLinkProps {
   href: string;
@@ -17,6 +19,7 @@ export const NavigationLink = ({
   setSelectedLink,
   selectedLink,
 }: NavigationLinkProps) => {
+  const pathname = usePathname();
   const blur = {
     initial: {
       filter: 'blur(0px)',
@@ -36,7 +39,12 @@ export const NavigationLink = ({
   };
   return (
     <motion.div
-      className="relative overflow-hidden text-sm before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:-translate-x-[100%] before:bg-primary before:transition-all before:duration-500 before:content-[''] hover:before:translate-x-0"
+      className={cn(
+        "relative overflow-hidden text-sm before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:-translate-x-[100%] before:bg-primary before:transition-all before:duration-500 before:content-[''] hover:before:translate-x-0",
+        href === '/'
+          ? pathname === href && 'font-medium'
+          : pathname.startsWith(href) && 'font-medium',
+      )}
       whileHover={{ scale: 1.1 }}
     >
       <Link
