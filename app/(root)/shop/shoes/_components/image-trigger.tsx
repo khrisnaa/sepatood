@@ -10,7 +10,7 @@ export const ImageTrigger = ({ value, imgUrl }: ImageTriggerProps) => {
   return (
     <TabsTrigger
       value={value}
-      className="aspect-square min-w-[40px] max-w-[80px] rounded-none border-2 border-primary p-0"
+      className="aspect-square min-w-[40px] max-w-[80px] rounded-none border-2 border-primary p-0 xl:min-w-[80px]"
     >
       <Image
         alt="shoes"

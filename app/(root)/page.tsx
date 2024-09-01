@@ -1,11 +1,10 @@
-import { Button } from '@/components/ui/button';
+import { HomeSection } from '@/components/home/home';
 import { UserButton } from '@clerk/nextjs';
-import Image from 'next/image';
 
 export default function Home() {
   return (
     <main>
-      <UserButton />
+      <HomeSection />
     </main>
   );
 }

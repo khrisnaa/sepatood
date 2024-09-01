@@ -17,7 +17,7 @@ export const ImageContent = ({ value, imgUrl }: ImageContentProps) => {
         defaultValue="0"
         defaultChecked={true}
       >
-        <div className="aspect-square h-full w-full min-w-[200px] max-w-[400px]">
+        <div className="aspect-square h-full w-full min-w-[200px] max-w-[400px] xl:min-w-[400px]">
           <Image
             alt="shoes"
             src={imgUrl}

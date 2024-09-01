@@ -107,7 +107,7 @@ export async function POST(req: Request) {
       clerkUserId: id,
       email: email_addresses[0].email_address,
       name: first_name + ' ' + last_name,
-      role: public_metadata.role == 'admin' ? Role.ADMIN : Role.USER,
+      role: public_metadata?.role == 'admin' ? Role.ADMIN : Role.USER,
       imageUrl: image_url,
     };
     await updateUser(user?.id, data);

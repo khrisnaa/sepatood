@@ -61,3 +61,21 @@ export type CartItemData = Prisma.CartItemGetPayload<{
     };
   };
 }>;
+export type OrderItemData = Prisma.OrderItemGetPayload<{
+  include: {
+    shoe: {
+      include: {
+        brand: true;
+        size: true;
+        shoeImages: true;
+        condition: true;
+      };
+    };
+  };
+}>;
+
+export type OrderData = Prisma.OrderGetPayload<{
+  include: {
+    orderItems: true;
+  };
+}>;
