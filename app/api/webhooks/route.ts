@@ -93,11 +93,13 @@ export async function POST(req: Request) {
       image_url,
     } = evt.data;
     if (!id || !email_addresses) {
+      console.log('Error occured -- missing data');
       return new Response('Error occured -- missing data', { status: 400 });
     }
 
     const { user } = await getUserById({ clerkUserId: id });
     if (!user) {
+      console.log('Error occured -- missing user');
       return new Response('Error occured -- missing user', { status: 400 });
     }
 

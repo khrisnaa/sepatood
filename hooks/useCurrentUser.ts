@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 export const useCurrentUser = () => {
   const { user } = useUser();
+
   const [userData, setUserData] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

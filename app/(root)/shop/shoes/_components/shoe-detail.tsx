@@ -13,13 +13,34 @@ import { useUser } from '@clerk/nextjs';
 import { addToCart } from '@/actions/carts';
 import { ShoeData } from '@/types/definition';
 import { Separator } from '@/components/ui/separator';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useToast } from '@/components/ui/use-toast';
 
 interface ShoeDetailProps {
   shoe: ShoeData;
 }
 
 export const ShoeDetail = ({ shoe }: ShoeDetailProps) => {
-  //UNDO
+  const { userData, error, loading } = useCurrentUser();
+  const { toast } = useToast();
+  const router = useRouter();
+  const onAddToCart = async () => {
+    try {
+      const data = {
+        userId: userData?.id || '',
+        shoeId: shoe.id,
+      };
+      await addToCart(data);
+      router.refresh();
+    } catch (error) {
+      // console.log(error);
+      toast({
+        description:
+          error instanceof Error ? error.message : 'An error occured.',
+      });
+    }
+  };
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 md:flex-row">
       <Tabs defaultValue="1" className="flex justify-center gap-2 p-2 sm:gap-4">
@@ -63,6 +84,7 @@ export const ShoeDetail = ({ shoe }: ShoeDetailProps) => {
         <Button
           variant={'flatPrimary'}
           className="mt-4 py-6 font-anton text-xl uppercase"
+          onClick={onAddToCart}
         >
           Add to Bag
         </Button>

@@ -14,7 +14,16 @@ export const addToCart = async (values: CartType) => {
     const { shoeId, userId } = validateFields.data;
 
     const existingCart = await db.cart.findUnique({ where: { userId } });
+
     if (existingCart) {
+      const existingItems = await db.cartItem.findFirst({
+        where: { cartId: existingCart.id, shoeId },
+      });
+
+      if (existingItems) {
+        throw new Error('Shoes already in your bag bro.');
+      }
+
       const cart = await db.cart.update({
         where: { id: existingCart.id },
         data: {
@@ -41,7 +50,11 @@ export const addToCart = async (values: CartType) => {
     return cart;
   } catch (error) {
     console.log('ADD_TO_CART => ', error);
-    throw new Error('Unable add shoe to cart.');
+
+    throw new Error(
+      (error instanceof Error && error.message) ||
+        'Unable to add shoe to cart.',
+    );
   }
 };
 
