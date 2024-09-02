@@ -156,3 +156,45 @@ export const deleteShoe = async (id: string) => {
     throw new Error('Unable to delete shoe.');
   }
 };
+
+export const getFilteredShoes = async ({
+  brandId,
+  categoryId,
+  colorId,
+  query,
+}: {
+  brandId?: string;
+  categoryId?: string;
+  colorId?: string;
+  query?: string;
+}) => {
+  return await db.shoe.findMany({
+    where: {
+      brandId,
+      shoeColors: { some: { colorId } },
+      shoeCategories: { some: { categoryId } },
+      ...(query && {
+        OR: [
+          {
+            model: {
+              contains: query,
+            },
+          },
+          {
+            description: {
+              contains: query,
+            },
+          },
+        ],
+      }),
+    },
+    include: {
+      brand: true,
+      condition: true,
+      shoeCategories: { include: { category: true } },
+      shoeColors: { include: { color: true } },
+      shoeImages: true,
+      size: true,
+    },
+  });
+};

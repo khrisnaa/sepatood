@@ -1,4 +1,4 @@
-import { CheckoutButton } from '@/app/(root)/cart/_components/checkout-button';
+import { CheckoutButton } from '@/app/(protected)/cart/_components/checkout-button';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { formatPrice } from '@/lib/utils';

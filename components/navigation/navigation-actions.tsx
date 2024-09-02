@@ -16,6 +16,7 @@ import { UserButton } from '@clerk/nextjs';
 import { Search, Settings, ShoppingBag, User } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion, useAnimation } from 'framer-motion';
+import { SearchBar } from '@/components/navigation/search-bar';
 export const NavigationActions = () => {
   const bounceControls = useAnimation();
   const searchControls = useAnimation();
@@ -23,33 +24,8 @@ export const NavigationActions = () => {
 
   return (
     <div className="flex items-center gap-2 md:gap-4">
-      <motion.button
-        className="p-1"
-        onClick={() => {
-          searchControls.start({
-            scale: [1, 1.2, 1],
-            transition: {
-              duration: 0.8,
-              ease: 'easeInOut',
-            },
-          });
-        }}
-        onHoverStart={() => {
-          searchControls.start({
-            scale: [1, 1.2, 1],
-            transition: {
-              duration: 0.8,
-              ease: 'easeInOut',
-            },
-          });
-        }}
-        onHoverEnd={() => {
-          searchControls.start({ scale: 1, transition: { duration: 0.5 } });
-        }}
-        animate={searchControls}
-      >
-        <Search className="h-5 w-5" />
-      </motion.button>
+      <SearchBar />
+
       <motion.button
         className="p-1"
         onClick={() => {

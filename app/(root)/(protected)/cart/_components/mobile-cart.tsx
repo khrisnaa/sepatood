@@ -1,4 +1,4 @@
-import { CartSummary } from '@/app/(root)/cart/_components/cart-summary';
+import { CartSummary } from '@/app/(protected)/cart/_components/cart-summary';
 import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/utils';
 import { CartItemData } from '@/types/definition';

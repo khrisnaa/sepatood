@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { CartSummary } from '@/app/(root)/cart/_components/cart-summary';
+import { CartSummary } from '@/app/(protected)/cart/_components/cart-summary';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
