@@ -1,4 +1,5 @@
 import { Home } from '@/components/home';
+import { FeaturedShoesSection } from '@/components/home/featured-shoes-section';
 import { UserButton } from '@clerk/nextjs';
 
 export default function Page() {
@@ -6,6 +7,7 @@ export default function Page() {
     <main>
       {/* <div className="h-screen bg-slate-300"></div> */}
       <Home />
+      <FeaturedShoesSection />
       <div className="h-screen bg-slate-300"></div>
       <div className="h-screen bg-slate-500"></div>
     </main>

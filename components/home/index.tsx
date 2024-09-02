@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { BrandSection } from '@/components/home/brand-section';
+import { FeaturedShoesSection } from '@/components/home/featured-shoes-section';
 
 export const Home = () => {
   const container = useRef();
@@ -54,7 +55,7 @@ export const Home = () => {
         </section>
         <section className="relative flex h-[700px] w-1/2 items-center justify-center overflow-hidden">
           <motion.div
-            className="3xl:right-[25%] absolute right-[15%] top-[5%] z-[2] h-[540px] w-[360px] bg-primary"
+            className="absolute right-[15%] top-[5%] z-[2] h-[540px] w-[360px] bg-primary 3xl:right-[25%]"
             initial={{ y: -100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{
@@ -63,7 +64,7 @@ export const Home = () => {
             }}
           />
           <motion.div
-            className="3xl:left-[25%] absolute bottom-[5%] left-[15%] z-[2] h-[540px] w-[360px] border-4 border-primary"
+            className="absolute bottom-[5%] left-[15%] z-[2] h-[540px] w-[360px] border-4 border-primary 3xl:left-[25%]"
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{

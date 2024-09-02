@@ -1,10 +1,9 @@
 import { getBrands } from '@/actions/brands';
 import { getCategories } from '@/actions/categories';
 import { getColors } from '@/actions/colors';
-import { getShoes } from '@/actions/shoes';
 import { Filter } from '@/app/(root)/shop/_componennts/filter';
 import { FilterDrawer } from '@/app/(root)/shop/_componennts/filter-drawer';
-import { ShoeCard } from '@/app/(root)/shop/_componennts/shoe-card';
+import { ShoeCard } from '@/components/product/shoe-card';
 
 import { db } from '@/lib/db';
 
