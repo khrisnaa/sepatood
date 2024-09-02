@@ -7,9 +7,9 @@ export default function Page() {
   return (
     <main>
       {/* <div className="h-screen bg-slate-300"></div> */}
-      <Home />
+      {/* <Home />
       <FeaturedShoesSection />
-      <About />
+      <About /> */}
       <div className="h-screen bg-slate-300"></div>
       <div className="h-screen bg-slate-500"></div>
     </main>

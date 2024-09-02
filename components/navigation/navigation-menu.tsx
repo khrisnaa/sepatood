@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavigationLink } from './navigation-link';
 
 const links = [
-  { href: '/', label: 'Home' },
+  { href: '/home', label: 'Home' },
   { href: '/shop', label: 'Shop' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
