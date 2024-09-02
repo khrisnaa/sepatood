@@ -21,6 +21,7 @@ const config = {
       screens: {
         xxs: '380px',
         xs: '480px',
+        '3xl': '1600px',
       },
       fontFamily: {
         anton: ['Anton', 'system-ui'],

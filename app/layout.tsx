@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="!scroll-smooth">
         <body className={cn('bg-secondary', roboto.className)}>{children}</body>
       </html>
     </ClerkProvider>

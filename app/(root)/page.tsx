@@ -1,12 +1,13 @@
-import { HomeSection } from '@/components/home/home';
+import { Home } from '@/components/home';
 import { UserButton } from '@clerk/nextjs';
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
-      <div className="h-screen bg-orange-500"></div>
-      <HomeSection />
-      <div className="h-screen bg-orange-500"></div>
+      {/* <div className="h-screen bg-slate-300"></div> */}
+      <Home />
+      <div className="h-screen bg-slate-300"></div>
+      <div className="h-screen bg-slate-500"></div>
     </main>
   );
 }

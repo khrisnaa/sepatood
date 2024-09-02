@@ -56,6 +56,21 @@ const Page = async ({ searchParams }: PageProps) => {
             <ShoeCard shoe={data} key={i} />
           </div>
         ))}
+        {shoes.map((data, i) => (
+          <div className="sm:w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]">
+            <ShoeCard shoe={data} key={i} />
+          </div>
+        ))}
+        {shoes.map((data, i) => (
+          <div className="sm:w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]">
+            <ShoeCard shoe={data} key={i} />
+          </div>
+        ))}
+        {shoes.map((data, i) => (
+          <div className="sm:w-[calc(50%-1rem)] md:w-[calc(33%-1rem)] xl:w-[calc(25%-1rem)]">
+            <ShoeCard shoe={data} key={i} />
+          </div>
+        ))}
       </main>
     </div>
   );

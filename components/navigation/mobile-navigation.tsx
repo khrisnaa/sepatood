@@ -39,10 +39,10 @@ export const MobileNavigation = () => {
               {...bounce}
               className={cn(
                 'rounded-md p-2',
-                link.href === '/'
-                  ? pathname === link.href && 'bg-primary text-secondary'
-                  : pathname.startsWith(link.href) &&
-                      'bg-primary text-secondary',
+                // link.href === '/'
+                //   ? pathname === link.href && 'bg-primary text-secondary'
+                //   : pathname.startsWith(link.href) &&
+                //       'bg-primary text-secondary',
               )}
             >
               {link.icon}
