@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { BrandSection } from '@/components/home/brand-section';
 import { FeaturedShoesSection } from '@/components/home/featured-shoes-section';
+import { BillboardCarouselSection } from '@/components/home/billboard-carousel-section';
 
 export const Home = () => {
   const container = useRef();
@@ -93,6 +94,7 @@ export const Home = () => {
         </section>
       </div>
       <BrandSection />
+      <BillboardCarouselSection />
     </main>
   );
 };

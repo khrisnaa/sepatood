@@ -45,7 +45,7 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
   return (
     <motion.div
       ref={ref}
-      // style={{ opacity: opacityValue, y: yValue }}
+      style={{ opacity: opacityValue, y: yValue }}
 
       // variants={{
       //   hidden: { opacity: 0, y: 75 },
@@ -55,9 +55,9 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
       // animate={mainControls}
       // transition={{ duration: 0.5, delay: 0.25 }}
 
-      initial={{ y: 75, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.4, type: 'spring', duration: 0.4 }}
+      // initial={{ y: 75, opacity: 0 }}
+      // whileInView={{ y: 0, opacity: 1 }}
+      // transition={{ delay: 0.4, type: 'spring', duration: 0.4 }}
     >
       <Card
         onClick={() => router.push(`/shop/shoes/${shoe.id}`)}
