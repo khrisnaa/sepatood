@@ -16,6 +16,9 @@ const Page = async () => {
       <div className="p-8">
         <FeaturedCarousel shoes={shoes} />
       </div>
+      <div className="p-8">
+        <FeaturedCarousel shoes={shoes} />
+      </div>
       <Footer />
     </main>
   );
