@@ -198,3 +198,19 @@ export const getFilteredShoes = async ({
     },
   });
 };
+
+export const getFeaturedShoes = async () => {
+  const shoes = await db.shoe.findMany({
+    where: { isFeatured: true },
+    include: {
+      brand: true,
+      condition: true,
+      size: true,
+      shoeImages: true,
+      shoeCategories: { include: { category: true } },
+      shoeColors: { include: { color: true } },
+    },
+  });
+
+  return shoes;
+};
