@@ -3,7 +3,7 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
-
+import { ReactLenis, useLenis } from '@/lib/lenis';
 const roboto = Poppins({
   weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin'],
@@ -22,9 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className="!scroll-smooth">
-        <body className={cn('bg-secondary', roboto.className)}>{children}</body>
-      </html>
+      <ReactLenis root>
+        <html lang="en">
+          <body className={cn('bg-secondary', roboto.className)}>
+            {children}
+          </body>
+        </html>
+      </ReactLenis>
     </ClerkProvider>
   );
 }

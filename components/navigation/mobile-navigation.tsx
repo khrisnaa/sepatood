@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const links = [
-  { href: '/', label: 'Home', icon: <Home /> },
+  { href: '/home', label: 'Home', icon: <Home /> },
   { href: '/shop', label: 'Shop', icon: <ShoppingCart /> },
   { href: '/about', label: 'About', icon: <Info /> },
   { href: '/contact', label: 'Contact', icon: <Mail /> },

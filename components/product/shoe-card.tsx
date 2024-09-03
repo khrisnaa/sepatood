@@ -39,13 +39,18 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
     offset: ['start end', 'end end'],
   });
 
+  const min = 1;
+  const max = 4;
+  const random = Math.random() * (max - min) + min;
+
   const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const yValue = useTransform(scrollYProgress, [0, 1], [75, 0]);
+  const yValue = useTransform(scrollYProgress, [0, 1], [50 * random, 0]);
 
   return (
     <motion.div
       ref={ref}
       style={{ opacity: opacityValue, y: yValue }}
+      transition={{ delay: random }}
 
       // variants={{
       //   hidden: { opacity: 0, y: 75 },
