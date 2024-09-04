@@ -1,5 +1,5 @@
 import { getUserById } from '@/actions/users';
-import { OrderCard } from '@/app/(root)/order/_components/order-card';
+import { OrderCard } from './_components/order-card';
 import { db } from '@/lib/db';
 import { auth } from '@clerk/nextjs/server';
 import { OrderStatus } from '@prisma/client';
@@ -34,8 +34,13 @@ const Page = async ({ searchParams }: PageProps) => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="container space-y-6 p-8">
       <p>{searchParams.order_id}</p>
+      <div className="grid grid-cols-3 px-4">
+        <span>Date</span>
+        <span>Price</span>
+        <span>Status</span>
+      </div>
       {orders.map((item, i) => (
         <OrderCard data={item} />
       ))}

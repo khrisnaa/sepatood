@@ -116,7 +116,11 @@ export const OrderSchema = z.object({
   totalPrice: z
     .number()
     .min(0, { message: 'Total price must be a positive number.' }),
-  // status: StatusEnum,
+  status: z.enum([
+    OrderStatus.PENDING,
+    OrderStatus.COMPLETE,
+    OrderStatus.CANCLE,
+  ]),
   cartId: z.string().min(1, { message: 'Cart ID is required.' }),
 });
 

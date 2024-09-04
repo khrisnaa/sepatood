@@ -1,5 +1,6 @@
 'use client';
-import { Button } from '@/components/ui/button';
+import { MotionButton } from '@/components/motion-button';
+
 import axios from 'axios';
 interface PayButtonProps {
   orderId: string;
@@ -16,5 +17,5 @@ export const PayButton = ({ orderId, totalPrice }: PayButtonProps) => {
 
     (window as any).snap.pay(res.data.token);
   };
-  return <Button onClick={onPay}>PayButton</Button>;
+  return <MotionButton onClick={onPay}>PAY</MotionButton>;
 };

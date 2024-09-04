@@ -86,3 +86,7 @@ export const getCartDetailsByUserId = async (userId: string) => {
     throw new Error('Unable get cart details.');
   }
 };
+
+export const deleteCartItem = async (id: string) => {
+  await db.cartItem.delete({ where: { id } });
+};

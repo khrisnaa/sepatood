@@ -17,6 +17,7 @@ import { Search, Settings, ShoppingBag, User } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion, useAnimation } from 'framer-motion';
 import { SearchBar } from '@/components/navigation/search-bar';
+import Link from 'next/link';
 export const NavigationActions = () => {
   const bounceControls = useAnimation();
   const searchControls = useAnimation();
@@ -26,33 +27,36 @@ export const NavigationActions = () => {
     <div className="flex items-center gap-2 md:gap-4">
       <SearchBar />
 
-      <motion.button
-        className="p-1"
-        onClick={() => {
-          bounceControls.start({
-            rotate: [0, 15, -10, 0],
-            transition: {
-              duration: 0.5,
-              ease: 'easeInOut',
-            },
-          });
-        }}
-        onHoverStart={() => {
-          bounceControls.start({
-            rotate: [0, 15, -10, 0],
-            transition: {
-              duration: 0.5,
-              ease: 'easeInOut',
-            },
-          });
-        }}
-        onHoverEnd={() => {
-          bounceControls.start({ rotate: 0, transition: { duration: 0.5 } });
-        }}
-        animate={bounceControls}
-      >
-        <ShoppingBag className="h-5 w-5" />
-      </motion.button>
+      <Link href="/cart">
+        <motion.button
+          className="p-1"
+          onClick={() => {
+            bounceControls.start({
+              rotate: [0, 15, -10, 0],
+              transition: {
+                duration: 0.5,
+                ease: 'easeInOut',
+              },
+            });
+          }}
+          onHoverStart={() => {
+            bounceControls.start({
+              rotate: [0, 15, -10, 0],
+              transition: {
+                duration: 0.5,
+                ease: 'easeInOut',
+              },
+            });
+          }}
+          onHoverEnd={() => {
+            bounceControls.start({ rotate: 0, transition: { duration: 0.5 } });
+          }}
+          animate={bounceControls}
+        >
+          <ShoppingBag className="h-5 w-5" />
+        </motion.button>
+      </Link>
+
       <SettingsMenu>
         <motion.button
           className="p-1"

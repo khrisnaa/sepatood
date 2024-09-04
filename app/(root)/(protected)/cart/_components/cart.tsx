@@ -9,10 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { CartSummary } from '@/app/(protected)/cart/_components/cart-summary';
+import { CartSummary } from './cart-summary';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
+import { deleteCartItem } from '@/actions/carts';
 
 interface CartProps {
   data: CartItemData[];
@@ -27,6 +28,9 @@ export const Cart = ({ data }: CartProps) => {
       return acc + num;
     }, 0);
 
+  const onDeleteCart = async (id: string) => {
+    await deleteCartItem(id);
+  };
   return (
     <div className="hidden sm:block">
       <div className="container flex items-center justify-center gap-8 p-8 sm:flex-col lg:flex-row lg:items-start">
@@ -50,6 +54,7 @@ export const Cart = ({ data }: CartProps) => {
                       <Button
                         variant={'ghost'}
                         className="h-full sm:max-h-[80px] lg:max-h-[100px]"
+                        onClick={() => onDeleteCart(item.id)}
                       >
                         X
                       </Button>

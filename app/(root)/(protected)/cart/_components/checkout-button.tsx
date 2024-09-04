@@ -21,8 +21,10 @@ export const CheckoutButton = ({ cartId, totalPrice }: CheckoutButtonProps) => {
         userId: String(userData?.id),
         cartId: String(cartId),
         totalPrice,
+        status: OrderStatus.PENDING,
       };
       await createOrder(data);
+      router.push('/order');
       router.refresh();
     } catch (error) {
       console.log(error);

@@ -31,6 +31,7 @@ export const ShoeDetail = ({ shoe }: ShoeDetailProps) => {
         shoeId: shoe.id,
       };
       await addToCart(data);
+      router.push('/cart');
       router.refresh();
     } catch (error) {
       // console.log(error);
