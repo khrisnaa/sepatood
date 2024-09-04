@@ -37,12 +37,12 @@ const Page = async ({ searchParams }: PageProps) => {
         />
         <section className="absolute right-4 h-full w-full max-w-[200px] sm:max-w-[400px] lg:max-w-[720px]">
           <div className="flex h-full flex-col items-center justify-center gap-4">
-            <h3 className="font-anton text-5xl uppercase text-secondary sm:text-6xl md:text-7xl lg:text-8xl">
+            <h3 className="font-anton text-5xl uppercase text-secondary dark:text-primary sm:text-6xl md:text-7xl lg:text-8xl">
               ARE YOU READY TO LEAD THE WAY
             </h3>
 
             <div className="mr-auto">
-              <MotionButton className="bg-accent-lime px-6 text-primary">
+              <MotionButton className="bg-accent-lime px-6 text-primary dark:text-secondary">
                 VIEW MORE
               </MotionButton>
             </div>

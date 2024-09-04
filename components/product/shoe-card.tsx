@@ -19,6 +19,7 @@ import {
   useTransform,
 } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
   const router = useRouter();
@@ -37,6 +38,8 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
   const opacityValue = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const yValue = useTransform(scrollYProgress, [0, 1], [50 * random, 0]);
 
+  const { setTheme, theme } = useTheme();
+
   return (
     <motion.div
       ref={ref}
@@ -52,7 +55,7 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
         <CardHeader className="flex h-full max-h-[32px] flex-row items-center justify-between border-2 border-primary xxs:max-h-[36px] xs:max-h-[40px] sm:max-h-[80px]">
           <div className="aspect-square h-8 sm:h-10 md:h-12">
             <Image
-              src={`/logos/${shoe.brand.name.toLocaleLowerCase()}-logo.svg`}
+              src={`/logos/${shoe.brand.name.toLocaleLowerCase()}-logo${theme === 'dark' ? '-w' : ''}.svg`}
               alt="shoes logo"
               height={150}
               width={150}
@@ -83,7 +86,7 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
             className="h-full w-full object-cover object-center"
           />
         </CardContent>
-        <CardFooter className="flex h-full max-h-[48px] flex-col items-start justify-center border-2 border-primary xxs:max-h-[52px] xs:max-h-[60px] sm:max-h-[120px]">
+        <CardFooter className="flex h-full max-h-[48px] flex-col items-start justify-center border-2 border-primary pt-2 xxs:max-h-[52px] xs:max-h-[60px] sm:max-h-[120px]">
           <h4 className="line-clamp-1 font-anton text-sm sm:text-lg md:text-2xl">{`${shoe.brand.name} ${shoe.model}`}</h4>
           <div className="hidden sm:block">
             <p className="line-clamp-2 text-sm text-muted-foreground">

@@ -4,6 +4,7 @@ import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { cn } from '@/lib/utils';
 import { ReactLenis, useLenis } from '@/lib/lenis';
+import { ThemeProvider } from '@/providers/theme-provider';
 const roboto = Poppins({
   weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin'],
@@ -25,7 +26,9 @@ export default function RootLayout({
       <ReactLenis root>
         <html lang="en">
           <body className={cn('bg-secondary', roboto.className)}>
-            {children}
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              {children}
+            </ThemeProvider>
           </body>
         </html>
       </ReactLenis>

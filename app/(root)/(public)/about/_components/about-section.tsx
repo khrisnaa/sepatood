@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/accordion';
 import { useRef } from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 interface AboutSectionProps {
   header: string;
@@ -41,6 +43,8 @@ export const AboutSection = ({
   const textValue = useTransform(scrollContent, [0, 1], ['-100%', '0%']);
   const imageValue = useTransform(scrollContent, [0, 1], ['100%', '0%']);
   const opacityValue = useTransform(scrollContent, [0, 1], [0, 1]);
+
+  const { setTheme, theme } = useTheme();
   return (
     <div className="py-8 text-primary">
       <Separator className="bg-primary" />
@@ -89,7 +93,14 @@ export const AboutSection = ({
             </p>
           </div>
 
-          <div className="relative hidden h-24 overflow-hidden bg-[url('/assets/checkboard.svg')] bg-contain bg-repeat md:flex">
+          <div
+            className={cn(
+              'relative hidden h-24 overflow-hidden bg-contain bg-repeat md:flex',
+              theme == 'dark'
+                ? "bg-[url('/assets/checkboard-w.svg')]"
+                : "bg-[url('/assets/checkboard.svg')]",
+            )}
+          >
             <span className="absolute left-0 top-0 h-full w-1/3 bg-accent-lime bg-[url('/assets/rings.svg')] bg-contain bg-center bg-no-repeat" />
           </div>
         </motion.div>

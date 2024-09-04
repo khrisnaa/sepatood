@@ -61,7 +61,7 @@ export const BillboardCarousel = () => {
                 />
                 <section className="absolute right-4 h-full w-full max-w-[200px] sm:max-w-[400px] lg:max-w-[720px]">
                   <div className="flex h-full flex-col items-center justify-center gap-4">
-                    <motion.h3 className="font-anton text-5xl uppercase text-secondary sm:text-6xl md:text-7xl lg:text-8xl">
+                    <motion.h3 className="font-anton text-5xl uppercase text-secondary dark:text-primary sm:text-6xl md:text-7xl lg:text-8xl">
                       <div>
                         {title.split('').map((l, i) => {
                           return (
@@ -91,7 +91,7 @@ export const BillboardCarousel = () => {
                         type: 'spring',
                       }}
                     >
-                      <MotionButton className="bg-accent-lime px-6 text-primary">
+                      <MotionButton className="bg-accent-lime px-6 text-primary dark:text-secondary">
                         VIEW MORE
                       </MotionButton>
                     </motion.div>

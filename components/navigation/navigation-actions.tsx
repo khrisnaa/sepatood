@@ -93,17 +93,23 @@ const SettingsMenu = ({ children }: { children: React.ReactNode }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Settings</DropdownMenuLabel>
+        <DropdownMenuLabel>Menu</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          {/* <DropdownMenuItem
+          <DropdownMenuItem>
+            <UserButton />
+            <span className="ml-3">Profile settings</span>
+          </DropdownMenuItem>
+          <DropdownMenuItem
             onClick={() =>
               theme === 'dark' ? setTheme('light') : setTheme('dark')
             }
           >
             <ModeToggle />
-            <span className="pl-2">{theme === 'dark' ? 'Light' : 'Dark'}</span>
-          </DropdownMenuItem> */}
+            <span className="pl-2">
+              {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            </span>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

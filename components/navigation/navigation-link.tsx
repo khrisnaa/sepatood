@@ -41,9 +41,7 @@ export const NavigationLink = ({
     <motion.div
       className={cn(
         "relative overflow-hidden text-sm before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:-translate-x-[100%] before:bg-primary before:transition-all before:duration-500 before:content-[''] hover:before:translate-x-0",
-        href === '/'
-          ? pathname === href && 'font-medium'
-          : pathname.startsWith(href) && 'font-medium',
+        pathname.startsWith(href) && 'font-medium',
       )}
       whileHover={{ scale: 1.1 }}
     >
