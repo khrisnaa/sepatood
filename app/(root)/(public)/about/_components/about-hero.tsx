@@ -18,7 +18,7 @@ export const AboutHero = () => {
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.01 * i, staggerChildren: 0.2 }}
+              transition={{ delay: (0.1 * i) / 4, staggerChildren: 0.2 }}
               viewport={{ once: true }}
             >
               {l}

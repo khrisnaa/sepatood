@@ -7,7 +7,6 @@ const Page = () => {
       <AboutHero />
       <AboutList />
       <div className="h-screen bg-slate-400"></div>
-
       <div className="h-screen bg-slate-400"></div>
       <div className="h-screen bg-slate-300"></div>
     </main>

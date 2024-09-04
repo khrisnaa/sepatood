@@ -12,7 +12,7 @@ export const Hero = () => {
   };
 
   return (
-    <div className="flex h-full max-h-[800px] w-full flex-col-reverse border-b-2 border-primary md:flex-row">
+    <div className="flex h-full max-h-[800px] w-full flex-col-reverse md:flex-row">
       <section className="flex flex-col justify-center gap-4 p-4 md:w-1/2 md:p-8">
         <motion.h1
           className="font-anton text-5xl uppercase sm:text-6xl md:text-7xl lg:text-8xl"

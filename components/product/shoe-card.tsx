@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
 } from '@/components/ui/card';
-import { formatPriceTag } from '@/lib/utils';
+import { cn, formatPriceTag } from '@/lib/utils';
 import { ShoeData } from '@/types/definition';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -24,15 +24,6 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
   const router = useRouter();
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
-
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start('visible');
-    }
-  }, [isInView]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -51,18 +42,8 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
       ref={ref}
       style={{ opacity: opacityValue, y: yValue }}
       transition={{ delay: random }}
-
-      // variants={{
-      //   hidden: { opacity: 0, y: 75 },
-      //   visible: { opacity: 1, y: 0 },
-      // }}
-      // initial="hidden"
-      // animate={mainControls}
-      // transition={{ duration: 0.5, delay: 0.25 }}
-
-      // initial={{ y: 75, opacity: 0 }}
-      // whileInView={{ y: 0, opacity: 1 }}
-      // transition={{ delay: 0.4, type: 'spring', duration: 0.4 }}
+      initial="initial"
+      whileHover="hovered"
     >
       <Card
         onClick={() => router.push(`/shop/shoes/${shoe.id}`)}
@@ -78,9 +59,20 @@ export const ShoeCard = ({ shoe }: { shoe: ShoeData }) => {
               className="w-full bg-cover"
             />
           </div>
-          <span className="w-fit font-anton sm:text-lg md:text-2xl">
-            {formatPriceTag(shoe.price)}
-          </span>
+          <motion.div className="relative inline-flex overflow-hidden whitespace-nowrap">
+            <motion.span
+              className="h-full font-anton sm:text-lg md:text-2xl"
+              variants={{ initial: { y: '0%' }, hovered: { y: '-100%' } }}
+            >
+              {formatPriceTag(shoe.price)}
+            </motion.span>
+            <motion.span
+              className="absolute inset-0 h-full font-anton sm:text-lg md:text-2xl"
+              variants={{ initial: { y: '100%' }, hovered: { y: '-0%' } }}
+            >
+              {formatPriceTag(shoe.price)}
+            </motion.span>
+          </motion.div>
         </CardHeader>
         <CardContent className="aspect-square max-h-[160px] border-x-2 border-primary p-0 xxs:max-h-[180px] xs:max-h-[200px] sm:max-h-[400px]">
           <Image
